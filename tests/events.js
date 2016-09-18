@@ -5,7 +5,7 @@ var EE = require('../lib/events.js');
 var assert = function (expr) {
   if (!expr)
     throw new Error('Failed !');
-}
+};
 
 var didThrow = function (callback) {
   try {
@@ -14,7 +14,7 @@ var didThrow = function (callback) {
   } catch (e) {
     return true;
   }
-}
+};
 
 var test = function (name, callback) 
 {
@@ -24,7 +24,7 @@ var test = function (name, callback)
     console.log ('Error at ' + name);
     throw e;
   }
-}
+};
 
 // Test that we emit on the right arguments
 test('#1', function () {
@@ -33,11 +33,11 @@ test('#1', function () {
   obj.on('check', function (value) {
     test += value;
   });
-  obj.emit('check', 3)
-  obj.emit('check', 2)
-  obj.emit('checked', 4)
-  assert (test == 5);
-  assert (obj.eventsNames().length == 3);
+  obj.emit('check', 3);
+  obj.emit('check', 2);
+  obj.emit('checked', 4);
+  assert (test === 5);
+  assert (obj.eventsNames().length === 3);
 });
 
 
@@ -49,9 +49,9 @@ test('#2', function () {
     assert (!test);
     test = true;
   });
-  obj.emit('check')
-  obj.emit('check')
-  assert (obj.eventsNames().length == 3);
+  obj.emit('check');
+  obj.emit('check');
+  assert (obj.eventsNames().length === 3);
 });
 
 
@@ -59,15 +59,15 @@ test('#2', function () {
 test('#3', function () {
   var obj = new EE();
   var sum9 = function (a, b) {
-    assert (a + b == 9);
+    assert (a + b === 9);
   }
   obj.on('check', sum9);
-  obj.emit('check', 1, 8)
-  obj.emit('check', 2, 7)
-  obj.emit('check', 3, 6)
-  obj.emit('check', 9, 0)
+  obj.emit('check', 1, 8);
+  obj.emit('check', 2, 7);
+  obj.emit('check', 3, 6);
+  obj.emit('check', 9, 0);
   obj.removeListener('check', sum9);
-  assert (obj.eventsNames().length == 3);
+  assert (obj.eventsNames().length === 3);
 });
 
 
@@ -82,26 +82,26 @@ test('#4', function () {
     test += value;
   });
   obj.emit('check', 1);
-  assert (test == 2);
-  assert (obj.eventsNames().length == 2);
+  assert (test === 2);
+  assert (obj.eventsNames().length === 2);
 });
 
 test('#5', function () {
   var obj = new EE();
   assert(didThrow(function () {
-    obj.on('check', 'Error')
+    obj.on('check', 'Error');
   }));
   assert(didThrow(function () {
-    obj.on('check', 90)
+    obj.on('check', 90);
   }));
   assert(didThrow(function () {
-    obj.once('check', {})
+    obj.once('check', {});
   }));
   assert(didThrow(function () {
-    obj.prependOnceListener('check', [])
+    obj.prependOnceListener('check', []);
   }));
 
-  assert(obj.listenerCount('check') == 0);
+  assert(obj.listenerCount('check') === 0);
 
   obj.prependOnceListener ('check', function() {});
   assert(didThrow(function () {
@@ -124,14 +124,14 @@ test('#6', function () {
   obj.on('check', handler1);
   obj.on('check', handler2);
   obj.on('check', handler3);
-  assert(obj.listenerCount('check') == 3);
+  assert(obj.listenerCount('check') === 3);
   obj.removeListener('check', handler2);
-  assert(obj.listenerCount('check') == 2);
+  assert(obj.listenerCount('check') === 2);
   obj.removeListener('check', handler3);
-  assert(obj.listenerCount('check') == 1);
+  assert(obj.listenerCount('check') === 1);
   obj.removeListener('check', handler2);
-  assert(obj.listenerCount('check') == 1);
+  assert(obj.listenerCount('check') === 1);
   obj.removeListener('check', handler1);
-  assert(obj.listenerCount('check') == 0);
+  assert(obj.listenerCount('check') === 0);
 
 });
