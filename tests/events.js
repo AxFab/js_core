@@ -3,8 +3,9 @@
 var EE = require('../lib/events.js');
 
 var assert = function (expr) {
-  if (!expr)
+  if (!expr) {
     throw new Error('Failed !');
+  }
 };
 
 var didThrow = function (callback) {
@@ -60,7 +61,7 @@ test('#3', function () {
   var obj = new EE();
   var sum9 = function (a, b) {
     assert (a + b === 9);
-  }
+  };
   obj.on('check', sum9);
   obj.emit('check', 1, 8);
   obj.emit('check', 2, 7);
@@ -105,8 +106,9 @@ test('#5', function () {
 
   obj.prependOnceListener ('check', function() {});
   assert(didThrow(function () {
-    for (var i=0; i < obj.defaultMaxListeners; ++i) 
+    for (var i=0; i < obj.defaultMaxListeners; ++i) {
       obj.on('check', function() {});
+    }
     
   }));
   assert(didThrow(function () {
