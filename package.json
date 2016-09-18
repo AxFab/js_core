@@ -1,0 +1,35 @@
+{
+  "name": "js_core",
+  "version": "0.0.0",
+  "description": "Recreate a core JavaScript library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/tests.js",
+    "coverage": "istanbul cover tests/tests.js",
+    "coveralls": "istanbul cover tests/tests.js && (cat ./coverage/lcov.info | coveralls)",
+    "codacy": "istanbul cover tests/tests.js && (cat ./coverage/lcov.info | codacy-coverage)",
+    "cover": "istanbul cover tests/tests.js && (cat ./coverage/lcov.info | coveralls) && (cat ./coverage/lcov.info | codacy-coverage) && rm -rf ./coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AxFab/js_core.git"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "codacy-coverage": "^1.1.3",
+    "istanbul": "0.3.*",
+    "coveralls": "2.11.*"
+  },
+  "keywords": [
+  ],
+  "author": {
+    "name": "Fabien Bavent",
+    "email": "fabien.bavent@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AxFab/js_core/issues"
+  },
+  "homepage": "https://github.com/AxFab/js_core"
+}
