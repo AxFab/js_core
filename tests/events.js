@@ -106,15 +106,20 @@ test('#5', function () {
 
   obj.prependOnceListener ('check', function() {});
   assert(didThrow(function () {
-    for (var i=0; i < obj.defaultMaxListeners; ++i) {
+    for (var i=0; i < obj.getMaxListeners(); ++i) {
       obj.on('check', function() {});
     }
-    
   }));
+
+  obj.setMaxListeners(obj.getMaxListeners() + 1);
+  obj.on('check', function() {});
+  
   assert(didThrow(function () {
     obj.removeListener('check', 'all');
   }));
 
+  obj.removeAllListeners('check');
+  assert(obj.listenerCount('check') === 0);
 });
 
 test('#6', function () {
