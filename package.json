@@ -4,11 +4,11 @@
   "description": "Recreate a core JavaScript library.",
   "main": "index.js",
   "scripts": {
-    "test": "node tests/tests.js",
-    "coverage": "istanbul cover tests/tests.js",
-    "coveralls": "istanbul cover tests/tests.js && (cat ./coverage/lcov.info | coveralls)",
-    "codacy": "istanbul cover tests/tests.js && (cat ./coverage/lcov.info | codacy-coverage)",
-    "cover": "istanbul cover tests/tests.js && (cat ./coverage/lcov.info | coveralls) && (cat ./coverage/lcov.info | codacy-coverage) && rm -rf ./coverage"
+    "test": "node tests/index.js",
+    "coverage": "istanbul cover tests/index.js",
+    "coveralls": "istanbul cover tests/index.js && (cat ./coverage/lcov.info | coveralls)",
+    "codacy": "istanbul cover tests/index.js && (cat ./coverage/lcov.info | codacy-coverage)",
+    "cover": "istanbul cover tests/index.js && (cat ./coverage/lcov.info | coveralls) && (cat ./coverage/lcov.info | codacy-coverage) && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
